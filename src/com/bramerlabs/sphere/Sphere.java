@@ -34,12 +34,66 @@ public class Sphere {
      * constructor for specified position, specified color, and specified shaded color
      * @param position - the position of this sphere
      * @param color - an org.joml.Vector3f vector representing the default color [r, g, b]
-     * @param color_shaded - an org.joml.Vector3f vector representing the shaded color [r, g, b]
+     * @param shadedColor - an org.joml.Vector3f vector representing the shaded color [r*, g*, b*]
      */
-    public Sphere(Vector3f position, Vector3f color, Vector3f color_shaded) {
+    public Sphere(Vector3f position, Vector3f color, Vector3f shadedColor) {
         this.position = position;
         this.color = color;
-        this.colorShaded = color_shaded;
+        this.colorShaded = shadedColor;
+    }
+
+    /**
+     * constructor for specified position, specified color, and specified shaded color
+     * @param position - float array containing the position in the form [x, y, z]
+     * @param color - float array containing the color in the form [r, g, b]
+     * @param shadedColor - float array containing the shaded color in the form [r*, g*, b*]
+     */
+    public Sphere(float[] position, float[] color, float[] shadedColor) {
+        this.position = new Vector3f(position[0], position[1], position[2]);
+        this.color = new Vector3f(color[0], color[1], color[2]);
+        this.colorShaded = new Vector3f(shadedColor[0], shadedColor[1], shadedColor[2]);
+    }
+
+    /**
+     * constructor for specified position, specified color, and generated shaded color with specified shade difference
+     * @param position - a float array containing the position in the form [x, y, z]
+     * @param color - a float array containing the color in the form [r, g, b]
+     * @param shadeDifference - a float value difference for each [r, g, b] value to be lower by to generate a shaded color
+     */
+    public Sphere(float[] position, float[] color, float shadeDifference) {
+        this.position = new Vector3f(position[0], position[1], position[2]);
+        this.color = new Vector3f(color[0], color[1], color[2]);
+        float r = color[0] - shadeDifference > 0 ? color[0] - shadeDifference : 0;
+        float g = color[1] - shadeDifference > 0 ? color[1] - shadeDifference : 0;
+        float b = color[2] - shadeDifference > 0 ? color[2] - shadeDifference : 0;
+        this.colorShaded = new Vector3f(r, g, b);
+    }
+
+    /**
+     * constructor for specified position, specified color, and generated shaded color with default shade difference
+     * @param position - a float array containing the position in the form [x, y, z]
+     * @param color - a float array containing the color in the form [r, g, b]
+     */
+    public Sphere(float[] position, float[] color) {
+        this.position = new Vector3f(position[0], position[1], position[2]);
+        this.color = new Vector3f(color[0], color[1], color[2]);
+        float r = color[0] - SHADE_DIFFERENCE > 0 ? color[0] - SHADE_DIFFERENCE : 0;
+        float g = color[1] - SHADE_DIFFERENCE > 0 ? color[1] - SHADE_DIFFERENCE : 0;
+        float b = color[2] - SHADE_DIFFERENCE > 0 ? color[2] - SHADE_DIFFERENCE : 0;
+        this.colorShaded = new Vector3f(r, g, b);
+    }
+
+    /**
+     * constructor for specified position, randomly generated color, and generated shaded color with default shade difference
+     * @param position - a float array containing the position in the form [x, y, z]
+     */
+    public Sphere(float[] position) {
+        this.position = new Vector3f(position[0], position[1], position[2]);
+        this.color = new Vector3f((float)Math.random(), (float)Math.random(), (float)Math.random());
+        float r = color.x - SHADE_DIFFERENCE > 0 ? color.x - SHADE_DIFFERENCE : 0;
+        float g = color.y - SHADE_DIFFERENCE > 0 ? color.y - SHADE_DIFFERENCE : 0;
+        float b = color.z - SHADE_DIFFERENCE > 0 ? color.z - SHADE_DIFFERENCE : 0;
+        this.colorShaded = new Vector3f(r, g, b);
     }
 
     /**
