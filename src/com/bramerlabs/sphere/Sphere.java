@@ -264,7 +264,7 @@ public class Sphere {
             Vector3f v3p = new Vector3f(v3);
 
             // if the triangle is in the lower half of the sphere use the shaded color to draw it
-            if (v1p.y > position.y || v2p.y > position.y || v3p.y > position.y) {
+            if (v1p.y + position.y > position.y || v2p.y + position.y > position.y || v3p.y + position.y > position.y) {
                 faces.add(new Triangle(v1p.add(position), v2p.add(position), v3p.add(position), color));
             } else {
                 faces.add(new Triangle(v1p.add(position), v2p.add(position), v3p.add(position), colorShaded));
