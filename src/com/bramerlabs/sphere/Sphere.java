@@ -210,18 +210,18 @@ public class Sphere {
 
         // define a regular icosahedron using 12 vertices
         Vector3f[] vertices = new Vector3f[12];
-        vertices[0]  = new Vector3f( 0.5f, 0,  phi/2);
-        vertices[1]  = new Vector3f( 0.5f, 0, -phi/2);
-        vertices[2]  = new Vector3f(-0.5f, 0,  phi/2);
-        vertices[3]  = new Vector3f(-0.5f, 0, -phi/2);
-        vertices[4]  = new Vector3f( phi/2,  0.5f, 0);
-        vertices[5]  = new Vector3f( phi/2, -0.5f, 0);
-        vertices[6]  = new Vector3f(-phi/2,  0.5f, 0);
-        vertices[7]  = new Vector3f(-phi/2, -0.5f, 0);
-        vertices[8]  = new Vector3f(0,  phi/2, 0.5f);
-        vertices[9]  = new Vector3f(0,  phi/2,-0.5f);
-        vertices[10] = new Vector3f(0, -phi/2, 0.5f);
-        vertices[11] = new Vector3f(0, -phi/2,-0.5f);
+        vertices[0]  = new Vector3f( 0.5f * radius, 0,  phi/2 * radius);
+        vertices[1]  = new Vector3f( 0.5f * radius, 0, -phi/2 * radius);
+        vertices[2]  = new Vector3f(-0.5f * radius, 0,  phi/2 * radius);
+        vertices[3]  = new Vector3f(-0.5f * radius, 0, -phi/2 * radius);
+        vertices[4]  = new Vector3f( phi/2 * radius,  0.5f * radius, 0);
+        vertices[5]  = new Vector3f( phi/2 * radius, -0.5f * radius, 0);
+        vertices[6]  = new Vector3f(-phi/2 * radius,  0.5f * radius, 0);
+        vertices[7]  = new Vector3f(-phi/2 * radius, -0.5f * radius, 0);
+        vertices[8]  = new Vector3f(0,  phi/2 * radius, 0.5f * radius);
+        vertices[9]  = new Vector3f(0,  phi/2 * radius,-0.5f * radius);
+        vertices[10] = new Vector3f(0, -phi/2 * radius, 0.5f * radius);
+        vertices[11] = new Vector3f(0, -phi/2 * radius,-0.5f * radius);
 
         // subdivide each triangular face (20 total) recursively
         subdivide(vertices[0],  vertices[2],  vertices[10], depth);
