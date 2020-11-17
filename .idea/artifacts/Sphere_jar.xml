@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Sphere:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Sphere_jar</output-path>
+    <root id="archive" name="Sphere.jar">
+      <element id="module-output" name="Sphere" />
+      <element id="dir-copy" path="$PROJECT_DIR$/out/production/Sphere/com" />
+    </root>
+  </artifact>
+</component>
